@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfólio do projeto MapeIA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte moderna e limpa -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #158c4a;
+      --green-dark: #0b5e31;
+      --bg-dark: #050712;
+      --bg-section: #0f1320;
+      --text-main: #f5f5f5;
+      --accent: #33c4a0;
+      --border-soft: rgba(255, 255, 255, 0.12);
+      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.45);
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --transition-fast: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #10162a 0%, #050712 50%, #020308 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== CABEÇALHO / HERO ===== */
+
+    .hero {
+      position: relative;
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(51,196,160,0.20), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(21,140,74,0.25), transparent 55%),
+        linear-gradient(135deg, #050712 0%, #0e1526 55%, #050712 100%);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.04), transparent 40%, transparent 60%, rgba(51,196,160,0.12));
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+      z-index: 2;
+    }
+
+    .hero-background-text {
+      position: absolute;
+      inset: 50% 0 auto;
+      transform: translateY(-55%);
+      font-size: clamp(3.5rem, 9vw, 6rem);
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.06); /* aparência “transparente” */
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ===== NAVBAR ===== */
+
+    .navbar {
+      background: var(--green);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      gap: 1rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: var(--radius-full);
+      padding: 0.25rem 0.75rem;
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-full);
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(0, 0, 0, 0.18);
+      transform: translateY(-1px);
+    }
+
+    /* ===== SEÇÕES GERAIS ===== */
+
+    main {
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      background: var(--bg-section);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 2rem 1.5rem;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .section h2::after {
+      content: "";
+      display: block;
+      width: 46px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .section-subtitle {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== SOBRE MIM ===== */
+
+    .about-content {
+      display: grid;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 0.75rem;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .about-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .about-photo {
+      justify-self: center;
+      max-width: 260px;
+    }
+
+    .about-photo img {
+      border-radius: 22px;
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+      object-fit: cover;
+    }
+
+    /* ===== MAPAS ===== */
+
+    .map-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-button {
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(4, 9, 25, 0.9);
+      color: #f5f5f5;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .filter-button:hover,
+    .filter-button:focus-visible {
+      background: rgba(10, 56, 36, 0.95);
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+    }
+
+    .filter-button.active {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      border-color: transparent;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    }
+
+    .map-grid {
+      border-radius: 14px;
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      padding: 1.5rem 1rem;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(2,5,18,0.7);
+    }
+
+    .empty-message {
+      max-width: 520px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .empty-message span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ===== CONTATO ===== */
+
+    .contact {
+      text-align: left;
+    }
+
+    .contact-text {
+      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .contact-links a:hover,
+    .contact-links a:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.55);
+      background: linear-gradient(135deg, #12a563, #0b7443);
+    }
+
+    .contact-links a::before {
+      content: "in";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 4px;
+      background: #0a66c2;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    /* ===== RODAPÉ ===== */
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2.5rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+
+    @media (min-width: 768px) {
+      .about-content {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      }
+
+      .section {
+        padding: 2.25rem 2.25rem;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-inner {
+        justify-content: space-between;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 0.5rem;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+      }
+
+      .navbar.open .nav-links {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>Portfólio do projeto MapeIA</h1>
+      <span class="hero-background-text">ELLY OLIVEIRA</span>
+    </div>
+
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <button class="nav-toggle" type="button" aria-label="Abrir ou fechar navegação">
+          ☰
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="#sobre">Sobre mim</a></li>
+          <li><a href="#mapas">Mapas</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SOBRE MIM -->
+    <section id="sobre" class="section about">
+      <div class="about-content">
+        <div class="about-text">
+          <div class="about-highlight">Cartografia &amp; Geotecnologias</div>
+          <h2>Sobre mim</h2>
+          <p>
+            Sou <strong>Elly Oliveira</strong>, cartógrafa e criadora do projeto <strong>MapeIA</strong>.
+            Trabalho com produção de mapas digitais, análise espacial e visualização de dados
+            geográficos, unindo precisão técnica e linguagem visual acessível.
+          </p>
+          <p>
+            Este portfólio apresenta a estrutura dos meus trabalhos em diferentes categorias
+            de mapas, com foco em soluções visuais elegantes para apoio à tomada de decisão
+            e comunicação de informações territoriais.
+          </p>
+        </div>
+
+        <div class="about-photo">
+          <!-- Use exatamente o arquivo de foto anexado -->
+          <img src="WhatsApp Image 2025-12-04 at 19.18.48.jpeg"
+               alt="Foto de Elly Oliveira, cartógrafa do projeto MapeIA">
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPAS -->
+    <section id="mapas" class="section maps">
+      <h2>Mapas</h2>
+      <p class="section-subtitle">
+        Utilize os filtros abaixo para organizar o portfólio por tipo de mapa.  
+        Nesta versão, apenas a estrutura está pronta para receber seus trabalhos.
+      </p>
+
+      <div class="map-filters">
+        <button class="filter-button active" data-filter="all">Todos os Mapas</button>
+        <button class="filter-button" data-filter="location">Mapas de localização</button>
+        <button class="filter-button" data-filter="thematic">Mapas temáticos</button>
+        <button class="filter-button" data-filter="artistic">Mapas artísticos</button>
+      </div>
+
+      <div id="map-grid" class="map-grid">
+        <div class="empty-message" id="empty-message">
+          Selecione um filtro acima. Os <span>cards de mapas</span> das categorias
+          escolhidas serão adicionados aqui futuramente.
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section contact">
+      <h2>Contato</h2>
+      <p class="contact-text">
+        Para colaborações, projetos de cartografia e visualização de dados espaciais,
+        você pode entrar em contato pelo LinkedIn:
+      </p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/tatianapara/"
+           target="_blank"
+           rel="noopener noreferrer">
+          LinkedIn
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> MapeIA · Portfólio de Elly Oliveira.
+  </footer>
+
+  <script>
+    // Ano automático no rodapé
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const navbar = document.getElementById("navbar");
+    const navToggle = document.querySelector(".nav-toggle");
+
+    navToggle.addEventListener("click", () => {
+      navbar.classList.toggle("open");
+    });
+
+    // Filtros de mapas (apenas feedback visual + mensagem)
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const emptyMessage = document.getElementById("empty-message");
+
+    const filterMessages = {
+      all: "Aqui você verá uma visão geral de todos os mapas cadastrados no portfólio.",
+      location: "Área reservada para <span>Mapas de localização</span>: plantas, croquis urbanos, mapas de referência espacial, entre outros.",
+      thematic: "Área reservada para <span>Mapas temáticos</span>: demografia, uso da terra, indicadores socioambientais etc.",
+      artistic: "Área reservada para <span>Mapas artísticos</span>: experimentações visuais, ilustrações cartográficas e narrativas visuais."
+    };
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        // estado visual do botão ativo
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-filter");
+        emptyMessage.innerHTML = filterMessages[filter] || filterMessages.all;
+      });
+    });
+  </script>
+</body>
+</html>
